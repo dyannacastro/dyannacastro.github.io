@@ -3841,6 +3841,17 @@ textarea.form-control-lg {
   overflow-y: auto;
 }
 
+.port-image img {
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  width: 100%; /* Make sure image fits inside container */
+  height: auto;
+}
+
+.port-image img:hover {
+  transform: scale(1.1); /* Zoom in effect */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
 .page-section .port-image img {
   width: 250px;
   height: 350px;
@@ -5785,17 +5796,24 @@ textarea.form-control-lg {
   position: relative;
   display: none;
   float: left;
-  width: 100%;
+  width: 100%; /* This ensures one item takes up the full width */
   margin-right: -100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
     transition: none;
   }
 }
+
+.carousel-item img {
+  width: 100%;
+  height: auto; /* Ensures images are responsive */
+}
+
 
 .carousel-item.active,
 .carousel-item-next,
@@ -5830,12 +5848,28 @@ textarea.form-control-lg {
   opacity: 0;
   transition: opacity 0s 0.6s;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .carousel-fade .active.carousel-item-start,
   .carousel-fade .active.carousel-item-end {
     transition: none;
   }
 }
+
+/* Responsive adjustment for smaller screens (e.g. mobile) */
+@media (max-width: 768px) {
+  .carousel-item .row {
+    display: flex;
+    flex-direction: column; /* Stacks the images vertically */
+    align-items: center;
+  }
+  .carousel-item .col-lg-4,
+  .carousel-item .col-md-6,
+  .carousel-item .col-sm-12 {
+    width: 100%; /* Ensures each image takes full width on small screens */
+  }
+}
+
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -11529,14 +11563,14 @@ width: 90%;
   color: #0056b3; 
 }
 
-/* CCOOOOOOONNNNNTTTTAAAACCCCCTTTTTTT */
+/* CONTACT */
 
 .contact .container {
   margin-top: 30px
 }
 .container .sec-title h2{
   padding-top: 20px;
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-align: left;
 }
 
@@ -11654,7 +11688,7 @@ width: 90%;
 }
 .info-box:hover .gradient-icon {
   transform: rotate(360deg); /* Rotate the icon slightly on hover */
-  color: #087990; /* Change the color on hover */
+  color: #618264; /* Change the color on hover */
 }
 
 .info-text h4 {
