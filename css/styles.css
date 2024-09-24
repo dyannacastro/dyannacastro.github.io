@@ -1,4 +1,7 @@
 @charset "UTF-8";
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
 /*!
 * Start Bootstrap - Agency v7.0.12 (https://startbootstrap.com/theme/agency)
 * Copyright 2013-2023 Start Bootstrap
@@ -5922,14 +5925,6 @@ textarea.form-control-lg {
   background-size: 100% 100%;
 }
 
-/* rtl:options: {
-  "autoRename": true,
-  "stringMap":[ {
-    "name"    : "prev-next",
-    "search"  : "prev",
-    "replace" : "next"
-  } ]
-} */
 .carousel-control-prev-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
 }
@@ -11058,6 +11053,16 @@ header.masthead .masthead-heading {
   height: 10%;
 }
 
+.timeline-panel {
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+}
+
+.timeline-panel.show {
+  opacity: 1; 
+  transform: translateY(0); 
+}
 
 .timeline {
   position: relative;
@@ -11401,13 +11406,29 @@ header.masthead {
   border-radius: 50%;
   max-width: 100%;
   height: auto;
+  object-fit: cover;
+  transform-style: preserve-3d;
+  box-shadow: 0 15px 10px #B0D9B1; /* Shadow is visible by default */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: float 4s ease-in-out infinite; /* Smooth up and down animation */
+  z-index: 1;
 }
 
 #home img:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 15px 10px #B0D9B1; 
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 20px 15px #A0C8A1; /* Shadow becomes more prominent on hover */
 }
+
+/* Keyframes for smooth up-and-down movement */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* Image starts and ends in the same position */
+  }
+  50% {
+    transform: translateY(-15px); /* Image moves up by 15px */
+  }
+}
+
 
 
 .text-container {
@@ -11599,9 +11620,7 @@ width: 90%;
 .heading {
   font-family: "Poppins";
   text-align: center;
-  /* text-decoration: underline; */
-  /* text-underline-offset: 10px;
-  text-decoration-thickness: 5px; */
+  text-decoration-thickness: 5px;
   margin-bottom: 50px;
   font-size: 2rem;
   font-weight: bolder;
@@ -11609,23 +11628,36 @@ width: 90%;
   text-transform: uppercase;
 }
 
-/* INFOOOOOOOOOOO */
+/* INFO */
 .lottie {
   text-align: center;
 }
-.lottie img{
+.lottie img {
   box-shadow: 0 15px 10px #B0D9B1; 
-  width: 400px;
-  height: 500px;
+  width: 350px;
+  height: 450px;
+  transform-style: preserve-3d;
   transition: transform 0.5s ease-in-out, color 0.3s ease;
   border-radius: 10%;
   object-fit: cover;
   margin-top: 50px;
+  animation: float 3s ease-in-out infinite; /* Smooth up and down animation */
 }
-.lottie img:hover{
+
+.lottie img:hover {
   transform: scale(1.1);
-  
 }
+
+/* Keyframes for smooth up-and-down animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at the same position */
+  }
+  50% {
+    transform: translateY(-20px); /* Move up at the middle of the animation */
+  }
+}
+
 .contact-info {
   width: 100%;
   padding-top: 10%;
@@ -11727,4 +11759,119 @@ width: 90%;
   font-size: 2rem;
   padding-bottom: 1rem;
   color: #618264;
+}
+
+/* Make #particles-js cover the entire page */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 0; 
+  pointer-events: none; 
+}
+
+body {
+  position: relative; /* Ensures all content is layered above the particles */
+  z-index: 3;
+}
+
+.slider {
+  --quantity: 10;
+}
+
+.banner h2 {
+  font-size: 1.5em;
+  margin-top: 20px;
+  color: #B0D9B1;
+  text-align: center;
+}
+
+/* Media query for tablets */
+@media (max-width: 768px) {
+  .banner h2 {
+    display: none; /* Hide the <h2> on tablets and smaller screens */
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 480px) {
+  .banner h2 {
+    display: none; /* Ensure <h2> stays hidden on mobile devices */
+  }
+}
+
+.banner{
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  padding-top: 6%;
+}
+
+.banner .slider{
+  position: relative;
+  width: 160px;
+  height: 175px;
+  top: 10%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+}
+
+@keyframes autoRun{
+  from{
+      transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }
+  to{
+      transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+
+.banner .slider .item{
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: 
+      rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+      translateZ(500px);
+}
+
+.banner .slider .item img,
+.banner .slider .item video { /* Combined selector for images and video */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5%;
+}
+
+.banner .content{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1400px, 100vw);
+  height: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .banner .slider{
+      width: 100px;
+      height: 150px;
+      left: calc(50% - 50px);
+  }
+  .banner .slider .item{
+      transform: 
+          rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+          translateZ(180px);
+  }
+  .banner .content h1{
+      font-size: 5em;
+  }
 }
