@@ -11804,11 +11804,12 @@ body {
 
 .banner{
   width: 100%;
-  height: 100vh;
+  height: 30vh;
   text-align: center;
   overflow: hidden;
   position: relative;
-  padding-top: 6%;
+  padding-top: 12%;
+  padding-bottom: 50%;
 }
 
 .banner .slider{
