@@ -3843,6 +3843,19 @@ textarea.form-control-lg {
   max-height: var(--bs-scroll-height, 75vh);
   overflow-y: auto;
 }
+.page-section .book-image img {
+  width: 350px;       /* wider for landscape */
+  height: 250px;      /* shorter height */
+  object-fit: cover;  /* crop nicely without distortion */
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out; /* keep smooth transition */
+}
+
+.book-image img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 
 .port-image img {
   transition: transform 0.3s ease-in-out; /* Smooth transition */
